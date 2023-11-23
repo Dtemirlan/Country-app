@@ -1,43 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import './CountryDetails.css';
 
 interface CountryDetailsProps {
     countryCode: string | null;
 }
 
-interface CountryDetailsData {
-    name: string;
-    capital: string;
-    population: number;
-    region: string;
-    borders: string[];
-}
-
 const CountryDetails: React.FC<CountryDetailsProps> = ({ countryCode }) => {
-    const [countryDetails, setCountryDetails] = useState<CountryDetailsData | null>(null);
+    const [countryDetails, setCountryDetails] = useState<any>(null);
 
     useEffect(() => {
         if (countryCode) {
-            axios.get<CountryDetailsData>(`https://restcountries.com/v2/alpha/${countryCode}`)
+            axios.get(`https://restcountries.com/v2/alpha/${countryCode}`)
                 .then(response => setCountryDetails(response.data))
                 .catch(error => console.error('Error fetching country details:', error));
         }
     }, [countryCode]);
 
+    if (!countryDetails) {
+        return <p>Select a country to view details</p>;
+    }
+
     return (
-        <div>
-            <h2>Country Details</h2>
-            {countryDetails ? (
-                <div>
-                    <h3>{countryDetails.name}</h3>
-                    <p>Capital: {countryDetails.capital}</p>
-                    <p>Population: {countryDetails.population}</p>
-                    <p>Region: {countryDetails.region}</p>
-                    <p>Bordering Countries: {countryDetails.borders.join(', ')}</p>
-                </div>
-            ) : (
-                <p>Select a country to view details.</p>
-            )}
+        <div className="country-details">
+            <h2>{countryDetails.name}</h2>
+            <img src={countryDetails.flags.png} alt={`${countryDetails.name} Flag`} className="flag" />
+            <p>Capital: {countryDetails.capital}</p>
+            <p>Population: {countryDetails.population}</p>
+            <p>Area: {countryDetails.area} square kilometers</p>
+            <p>Region: {countryDetails.region}</p>
+            <p>Bordering Countries: {countryDetails.borders ? countryDetails.borders.join(', ') : 'None'}</p>
+
         </div>
     );
 };

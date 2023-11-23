@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './CountryList.css';
 
 interface Country {
     alpha3Code: string;
@@ -12,7 +13,6 @@ interface CountryListProps {
 
 const CountryList: React.FC<CountryListProps> = ({ onSelectCountry }) => {
     const [countries, setCountries] = useState<Country[]>([]);
-    const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
 
     useEffect(() => {
         axios.get<Country[]>('https://restcountries.com/v2/all?fields=alpha3Code,name')
@@ -21,17 +21,16 @@ const CountryList: React.FC<CountryListProps> = ({ onSelectCountry }) => {
     }, []);
 
     const handleCountryClick = (country: Country) => {
-        setSelectedCountry(country.alpha3Code);
         onSelectCountry(country.alpha3Code);
     };
 
     return (
-        <div>
+        <div className="country-list">
             <h2>Country List</h2>
             <ul>
                 {countries.map(country => (
                     <li key={country.alpha3Code} onClick={() => handleCountryClick(country)}>
-                        {country.name}
+                        <a href="#">{country.name}</a>
                     </li>
                 ))}
             </ul>

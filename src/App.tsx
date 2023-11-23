@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import CountryList from './components/CountryList';
 import CountryDetails from './components/CountryDetails';
+import './App.css';
 
 function App() {
     const [selectedCountryCode, setSelectedCountryCode] = useState<string | null>(null);
@@ -10,7 +11,7 @@ function App() {
     };
 
     return (
-        <div>
+        <div className="app-container">
             <CountryList onSelectCountry={handleSelectCountry} />
             <CountryDetails countryCode={selectedCountryCode} />
         </div>

@@ -1,0 +1,45 @@
+.country-list {
+    flex: 1;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+}
+
+.country-list h2 {
+    margin-bottom: 10px;
+}
+
+.country-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.country-list li {
+    margin-bottom: 8px;
+}
+
+.country-list a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.country-list a:hover {
+    color: #007bff;
+}
+
+.country-list {
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.country-list-item {
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+.country-list-item:hover {
+    background-color: #f0f0f0;
+}
