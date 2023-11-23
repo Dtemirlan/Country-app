@@ -5,10 +5,10 @@
 }
 
 .country-list {
-  flex: 1;
-  padding: 20px;
-  border-right: 1px solid #ccc;
   overflow-y: auto;
+  max-height: 80vh;
+  width: 30%;
+  border-right: 1px solid #ddd;
 }
 
 .country-details {
@@ -21,4 +21,73 @@
   justify-content: space-between;
   padding: 20px;
   height: 100vh;
+  font-family: 'Arial', sans-serif;
 }
+
+.country-list-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s;
+}
+
+.country-list-item:hover {
+  background-color: #f0f0f0;
+}
+
+.country-details {
+  width: 65%;
+  padding: 20px;
+}
+
+.country-details img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.country-details p {
+  margin-bottom: 10px;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.inputContainer {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.inputContainer input {
+  flex: 1;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.messagesContainer {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.messagesContainer .message {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
